@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}课程列表{% endblock %}
+{% block content %}
+<section class="card">
+  <h2>课程列表</h2>
+  <table>
+    <thead><tr><th>课程号</th><th>课程名</th><th>开课院系</th><th>学分</th></tr></thead>
+    <tbody>
+      {% for c in courses %}
+      <tr><td>{{ c.course_id }}</td><td>{{ c.title }}</td>
+          <td>{{ c.dept_name }}</td><td>{{ c.credits }}</td></tr>
+      {% else %}
+      <tr><td colspan="4">没有数据</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endblock %}
