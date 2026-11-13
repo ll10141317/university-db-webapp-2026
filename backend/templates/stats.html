@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}院系统计{% endblock %}
+{% block content %}
+<section class="card">
+  <h2>各院系学生人数</h2>
+  <table>
+    <thead><tr><th>院系</th><th>学生人数</th></tr></thead>
+    <tbody>
+      {% for s in stats %}
+      <tr><td>{{ s.dept_name }}</td><td>{{ s.num }}</td></tr>
+      {% else %}
+      <tr><td colspan="2">没有数据</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endblock %}
