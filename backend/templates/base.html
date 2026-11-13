@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}大学数据库管理系统{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header>
+  <h1>大学数据库管理系统</h1>
+  <nav>
+    <a href="{{ url_for('index') }}">首页</a>
+    <a href="{{ url_for('students') }}">学生管理</a>
+    <a href="{{ url_for('courses') }}">课程</a>
+    <a href="{{ url_for('stats') }}">统计</a>
+  </nav>
+</header>
+<main>
+  {% block content %}{% endblock %}
+</main>
+<footer>数据库系统原理实验34 —— 三层架构示例（Flask + openGauss + Docker）</footer>
+</body>
+</html>
