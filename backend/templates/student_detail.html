@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}学生详情{% endblock %}
+{% block content %}
+<section class="card">
+  <h2>学生详情</h2>
+  <p><b>学号：</b>{{ stu.id }}</p>
+  <p><b>姓名：</b>{{ stu.name }}</p>
+  <p><b>院系：</b>{{ stu.dept_name }}</p>
+  <p><b>已修学分：</b>{{ stu.tot_cred }}</p>
+  <h3>选课记录</h3>
+  <table>
+    <thead><tr><th>课程号</th><th>课程名</th><th>学期</th><th>年份</th><th>成绩</th></tr></thead>
+    <tbody>
+      {% for t in stu.takes %}
+      <tr>
+        <td>{{ t.course_id }}</td><td>{{ t.title }}</td>
+        <td>{{ t.semester }}</td><td>{{ t.year }}</td><td>{{ t.grade }}</td>
+      </tr>
+      {% else %}
+      <tr><td colspan="5">没有选课记录</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <p><a href="{{ url_for('students') }}">返回列表</a></p>
+</section>
+{% endblock %}
