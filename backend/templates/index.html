@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="card">
+  <h2>欢迎</h2>
+  <p>本系统用于演示“表示层 - 业务逻辑层 - 数据访问层”的三层架构，
+     后端数据库为国产数据库 openGauss（也可换成 KingbaseES / OceanBase）。</p>
+  <ul>
+    <li>查询学生：<a href="{{ url_for('students') }}">学生管理</a></li>
+    <li>添加学生：<a href="{{ url_for('student_new') }}">新增学生</a></li>
+    <li>查看课程：<a href="{{ url_for('courses') }}">课程列表</a></li>
+    <li>院系统计：<a href="{{ url_for('stats') }}">统计报表</a></li>
+  </ul>
+</section>
+{% endblock %}
