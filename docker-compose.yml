@@ -1,0 +1,30 @@
+services:
+  web:
+    build: ./backend
+    image: university-webapp:1.0
+    container_name: university-webapp
+    ports:
+      - "8080:8080"
+    environment:
+      # 先复制 .env.example 为 .env，再填写自己的数据库连接信息。
+      DB_HOST: "${DB_HOST}"
+      DB_PORT: "${DB_PORT:-26000}"
+      DB_NAME: "${DB_NAME:-studentdb}"
+      DB_USER: "${DB_USER:-student}"
+      DB_PASSWORD: "${DB_PASSWORD}"
+      APP_PORT: "${APP_PORT:-8080}"
+    restart: unless-stopped
+    # 若数据库也在本 compose 内，可放开下面的依赖
+    # depends_on:
+    #   - db
+
+  # 示例：如果把 openGauss 也放进 Docker（实验里可选）
+  # db:
+  #   image: enmotech/opengauss:1.0.1
+  #   privileged: true
+  #   environment:
+  #     GS_PASSWORD: "${GS_PASSWORD}"
+  #   ports:
+  #     - "26000:5432"
+  #   volumes:
+  #     - ./data/opengauss:/var/lib/opengauss
