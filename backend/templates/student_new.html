@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}新增学生{% endblock %}
+{% block content %}
+<section class="card">
+  <h2>新增学生</h2>
+  {% if error %}<p class="error">{{ error }}</p>{% endif %}
+  <form method="post" action="{{ url_for('student_new') }}">
+    <label>学号 <input type="text" name="id" value="{{ form.get('id','') }}" required></label>
+    <label>姓名 <input type="text" name="name" value="{{ form.get('name','') }}" required></label>
+    <label>院系
+      <select name="dept_name" required>
+        {% for d in departments %}
+        <option value="{{ d.dept_name }}">{{ d.dept_name }}</option>
+        {% endfor %}
+      </select>
+    </label>
+    <label>已修学分 <input type="number" name="tot_cred" value="{{ form.get('tot_cred','0') }}" min="0" max="999"></label>
+    <button type="submit">保存</button>
+    <a class="btn" href="{{ url_for('students') }}">取消</a>
+  </form>
+</section>
+{% endblock %}
